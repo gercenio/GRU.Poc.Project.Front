@@ -5,12 +5,13 @@ import {
 import StickyHeadTable from '../../components/template/StickyTable';
 import UserService from '../../service/UserService';
 import { RouteComponentProps } from 'react-router';
+import { Link } from 'react-router-dom';
 
 interface UserColumn {
     id: 'rpe' | 'telefone1' | 'telefone2' | 'email1' | 'email2' | 'cia' | 'sigla' | 'edit';
     label: string;
     minWidth?: number;
-    align?: 'right';
+    align?: 'right' | 'center';
     action?: boolean;
     url?: string;
     format?: (value: number) => string;
@@ -24,7 +25,7 @@ const columns: UserColumn[] = [
     { id: 'email2', label: 'E-mail 2', minWidth: 100 },
     { id: 'cia', label: 'Companhia', minWidth: 100 },
     { id: 'sigla', label: 'Sigla', minWidth: 100 },
-    { id: 'edit', label: 'Ação', minWidth: 100, action: true, url: '/usuario/'}
+    { id: 'edit', label: 'Ação', align: 'center', minWidth: 100, action: true, url: '/usuario/'}
 ];
 
 interface MyState {
@@ -67,7 +68,8 @@ class List extends React.Component<RouteComponentProps, MyState> {
                         <TextField id="initials" label="Sigla ICIA" />
                     </div>
 
-                    <div>
+                    <div dir="rtl">
+                        <Link to="/usuario" style={{textDecoration: 'none'}}><Button type="submit" variant="contained" color="secondary">Adicionar</Button></Link>
                         <Button type="submit" variant="contained" color="primary" >Pesquisar</Button>
                     </div>
                 </form>

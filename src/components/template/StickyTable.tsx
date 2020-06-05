@@ -18,6 +18,10 @@ const useStyles = makeStyles({
         container: {
         maxHeight: 440,
     },
+    link: {
+      textDecoration: 'none',
+      color: '#BFD730'
+    }
 });
 
 export default function StickyHeadTable(props:any) {
@@ -60,7 +64,7 @@ export default function StickyHeadTable(props:any) {
                       if(column.action) {
                         return (
                             <TableCell key={column.id} align={column.align}>
-                                <Link to={column.url + row.id}>
+                                <Link to={column.url + row.id} className={classes.link}>
                                     <CreateIcon/>
                                 </Link>
                             </TableCell>

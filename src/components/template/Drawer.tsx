@@ -1,99 +1,23 @@
 import { Link } from "react-router-dom";
 import React from 'react';
 import clsx from 'clsx';
-import { createStyles, makeStyles, useTheme, Theme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
+import { Drawer, AppBar, Toolbar, List, CssBaseline, Typography, Divider, IconButton, Select, MenuItem, Grid, useTheme, Box } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import HomeIcon from '@material-ui/icons/Home'
-import FlightIcon from '@material-ui/icons/Flight';
-import PersonIcon from '@material-ui/icons/Person';
-import GroupIcon from '@material-ui/icons/Group';
-import ListIcon from '@material-ui/icons/List';
 import ListElement from './ListItemButton';
-import { Select, MenuItem, Grid } from "@material-ui/core";
+import { drawerStyle } from "./Style";
+import MenuService from "../../service/MenuService";
 
 const drawerWidth = 240;
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex',
-    },
-    appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-      transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-    },
-    appBarShift: {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
-      transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    menuButton: {
-      marginRight: 36,
-    },
-    hide: {
-      display: 'none',
-    },
-    drawer: {
-      width: drawerWidth,
-      flexShrink: 0,
-      whiteSpace: 'nowrap',
-    },
-    drawerOpen: {
-      width: drawerWidth,
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-    },
-    drawerClose: {
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-      }),
-      overflowX: 'hidden',
-      width: theme.spacing(7) + 1,
-      [theme.breakpoints.up('sm')]: {
-        width: theme.spacing(9) + 1,
-      },
-    },
-    toolbar: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      padding: theme.spacing(0, 1),
-      ...theme.mixins.toolbar,
-    },
-    content: {
-      width: '100%',
-      padding: theme.spacing(3),
-    },
-    link: {
-      textDecoration: 'none',
-      color: 'black'
-    }
-  }),
-);
+const useStyles = drawerStyle(drawerWidth);
 
 export default function MiniDrawer(props:any) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const menuElements = MenuService.getAll();
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -102,34 +26,6 @@ export default function MiniDrawer(props:any) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
-  const menuElements = [
-    {
-      name: 'Home',
-      icon: <HomeIcon/>,
-      url: '/'
-    },
-    {
-      name: 'Companhia',
-      icon: <FlightIcon/>,
-      url: '/companhias'
-    },
-    {
-      name: 'Usuário',
-      icon: <PersonIcon/>,
-      url: '/usuarios'
-    },
-    {
-      name: 'Grupo',
-      icon: <GroupIcon/>,
-      url: '/grupos'
-    },
-    {
-      name: 'Formulário',
-      icon: <ListIcon/>,
-      url: '/formularios'
-    }
-  ];
 
   return (
     <div className={classes.root}>
@@ -152,11 +48,11 @@ export default function MiniDrawer(props:any) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6">
-            GRU
-          </Typography>
+          <Box fontWeight="fontWeightBold">
+            <img src={process.env.PUBLIC_URL + 'logo.png'} alt="Logo"/>
+          </Box>
           
-          <Grid container  justify="flex-end" >
+          <Grid container justify="flex-end" >
             <Select labelId="cia" value={0}  id="select-cia" >
               <MenuItem value={0}>CIA 1</MenuItem>
               <MenuItem value={1}>CIA 2</MenuItem>
@@ -180,7 +76,7 @@ export default function MiniDrawer(props:any) {
       >
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? <ChevronRightIcon style={{ color: '#BFD730' }}/> : <ChevronLeftIcon style={{ color: '#BFD730' }}/>}
           </IconButton>
         </div>
         <Divider />

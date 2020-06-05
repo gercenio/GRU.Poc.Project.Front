@@ -6,7 +6,7 @@ import {
 export default () => {
     return (
         <React.Fragment>
-            <Typography variant="h4">~Home~</Typography>
+            <Typography variant="h4">Home</Typography>
             <Typography variant="body1">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed faucibus sollicitudin ligula, porttitor eleifend justo semper lacinia. Praesent lectus nisi, finibus id dui consectetur, consequat dictum est. Sed consectetur finibus mattis. Integer dui erat, tincidunt quis dolor vel, porta rhoncus ante. Morbi at urna pulvinar, aliquet nulla eget, iaculis ligula. Phasellus tristique bibendum consectetur. Vestibulum sem lacus, gravida in interdum in, facilisis porttitor odio. Suspendisse porttitor nisl odio, at lobortis dolor tempus at. Vivamus congue dolor risus, vitae lobortis ligula molestie eu. Ut sodales purus sit amet dictum congue. Vivamus cursus ultrices lorem, dignissim ornare quam molestie vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce vitae nibh mattis nunc lobortis sollicitudin quis ac diam. Nulla facilisi. In vehicula justo lobortis, maximus eros fermentum, pellentesque urna. Integer ac dapibus felis, non dignissim nunc.
                 Sed ac leo eget elit faucibus lobortis ut in nisl. Proin eget porta neque, quis mattis libero. Cras lacinia, felis at dictum commodo, elit arcu eleifend elit, vitae placerat mauris sem eget lorem. Duis iaculis lacus erat, sed varius nunc finibus elementum. Etiam molestie vehicula mauris et consequat. Proin dignissim nec velit sed tincidunt. Donec dignissim urna metus. Praesent accumsan tempus libero, eget bibendum elit aliquet id. Quisque viverra mollis lacinia. Vivamus ut nisi sit amet ante ullamcorper iaculis.
